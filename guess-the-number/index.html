@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guess The Number</title>
+  </head>
+  <body class="m-0 dark:bg-slate-800">
+    <div id="app" class="text-center p-24 h-screen">
+      <h1 class="text-5xl font-bold text-white">Guess The Number</h1>
+      <p class="text-2xl mt-16 text-white">Ta mission si tu l'acceptes est de trouver le nombre mystère généré par l'ordinateur...à toi de jouer ! 😈</p>
+      <p class="text-2xl mt-8 text-red-500">Ce nombre sera compris entre 0 et 500</p>
+      
+      <button class="text-2xl mt-16 mb-10" id="button">Démarrer</button>
+      
+      <div id="container-form" class="gap-5">
+      </div>
+      <p class="text-2xl mt-10" id="result"></p>
+      <p id="reward" class="text-2xl text-white mt-5"></p>
+      <div id="restart"></div>
+      <footer class="mt-15">
+        <p id="developper" class="text-white"></p>
+      </footer>
+    </div>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
