@@ -57,7 +57,6 @@ document.addEventListener("DOMContentLoaded", () => {
     numberGuess = parseInt(formData.get("number"));
     console.log({ numberGuess });
     console.log("Bien le bonjour à toi ! ");
-    console.log(typeof numberGuess);
     game(numberGuess);
     score.textContent = `Score = ${userTest}`;
   };
@@ -93,6 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
           "💶 Tu as gagné -20% à la boutique Séphora de Vincennes ou Cour Saint Emillion",
           "💶 Pour te récompenser...tu as gagné -50% sur ta prochaine licence de Jujitsu...va vite harceler Alain A. !",
           "🎄 Pour te récompenser...tu as gagné une bûche glacée offerte par Alain A. !",
+          "👑 Pour te récompenser...tu as gagné une galette des rois offerte par Alain A. !",
         ];
         const rewardsIndex = Math.floor(Math.random() * rewards.length);
 
