@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (count === 1) {
       targetNumber = getRandomArbitrary(0, 500);
       console.log({ targetNumber });
-      score.textContent = "Score = 0";
+      // score.textContent = "Score = 0";
       createForm();
     }
   });
@@ -41,11 +41,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const input = document.createElement("input");
     const submitButton = document.createElement("button");
     form.setAttribute("id", "form");
-    form.classList.add("flex", "justify-center", "gap-5");
+    form.classList.add("flex", "justify-center", "gap-5", "mt-10");
     input.placeholder = "Entre ton nombre";
     input.setAttribute("name", "number");
     input.setAttribute("id", "number");
     input.setAttribute("autocomplete", "off");
+    input.setAttribute("type", "number");
+    input.setAttribute("min", "0");
+    input.setAttribute("max", "500");
     submitButton.classList.add("mt-5");
     submitButton.textContent = "Envoyer";
     containerForm.innerHTML = "";
@@ -58,6 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
       handleFormSubmit(event);
       input.value = "";
     });
+    button.remove();
   };
 
   const getRandomArbitrary = (min, max) => {
