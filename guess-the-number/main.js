@@ -13,12 +13,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const developper = document.querySelector("#developper");
   const reward = document.querySelector("#reward");
   const containerForm = document.querySelector("#container-form");
+  let score = document.querySelector("#score");
 
   const handleFormSubmit = (event) => {
     const formData = new FormData(event.currentTarget);
     numberGuess = parseInt(formData.get("number"));
     console.log({ numberGuess });
+    console.log("Bien le bonjour à toi ! ");
     game(numberGuess);
+    score.textContent = numberGuess
+      ? `Score : ${userTest}`
+      : `Score : ${userTest + 0}`;
   };
 
   button.addEventListener("click", () => {
@@ -26,6 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (count === 1) {
       targetNumber = getRandomArbitrary(0, 500);
       console.log({ targetNumber });
+      score.textContent = "Score = 0";
       createForm();
     }
   });
@@ -34,17 +40,18 @@ document.addEventListener("DOMContentLoaded", () => {
     const form = document.createElement("form");
     const input = document.createElement("input");
     const submitButton = document.createElement("button");
-    input.placeholder = "Entre ton nombre";
-    submitButton.textContent = "Envoyer";
     form.setAttribute("id", "form");
-    containerForm.innerHTML = "";
     form.classList.add("flex", "justify-center", "gap-5");
-    containerForm.append(form);
+    input.placeholder = "Entre ton nombre";
     input.setAttribute("name", "number");
     input.setAttribute("id", "number");
     input.setAttribute("autocomplete", "off");
+    submitButton.classList.add("mt-5");
+    submitButton.textContent = "Envoyer";
+    containerForm.innerHTML = "";
 
     form.append(input, submitButton);
+    containerForm.append(form);
 
     form.addEventListener("submit", (event) => {
       event.preventDefault();
@@ -91,7 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 1000);
         restartGame();
       }
-      resultDiv.classList.add("text-white");
+      resultDiv.classList.add("text-white", "text-2xl");
       resultDiv.textContent = resultMessage;
     };
 
@@ -108,7 +115,6 @@ document.addEventListener("DOMContentLoaded", () => {
       restart.append(buttonRestart);
 
       buttonRestart.addEventListener("click", () => {
-        console.log("je veux rejouer ! ");
         location.reload();
         //équivalent :
         // count = 0;
