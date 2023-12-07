@@ -9,22 +9,11 @@ document.addEventListener("DOMContentLoaded", () => {
   let restartClick = 0;
 
   const button = document.querySelector("#button");
-  const resultDiv = document.querySelector("#result");
-  const developper = document.querySelector("#developper");
-  const reward = document.querySelector("#reward");
   const containerForm = document.querySelector("#container-form");
+  const resultDiv = document.querySelector("#result");
+  const reward = document.querySelector("#reward");
   let score = document.querySelector("#score");
-
-  const handleFormSubmit = (event) => {
-    const formData = new FormData(event.currentTarget);
-    numberGuess = parseInt(formData.get("number"));
-    console.log({ numberGuess });
-    console.log("Bien le bonjour à toi ! ");
-    game(numberGuess);
-    score.textContent = numberGuess
-      ? `Score : ${userTest}`
-      : `Score : ${userTest + 0}`;
-  };
+  const developper = document.querySelector("#developper");
 
   button.addEventListener("click", () => {
     count += 1;
@@ -51,7 +40,6 @@ document.addEventListener("DOMContentLoaded", () => {
     input.setAttribute("max", "500");
     submitButton.classList.add("mt-5");
     submitButton.textContent = "Envoyer";
-    containerForm.innerHTML = "";
 
     form.append(input, submitButton);
     containerForm.append(form);
@@ -62,6 +50,16 @@ document.addEventListener("DOMContentLoaded", () => {
       input.value = "";
     });
     button.remove();
+  };
+
+  const handleFormSubmit = (event) => {
+    const formData = new FormData(event.currentTarget);
+    numberGuess = parseInt(formData.get("number"));
+    console.log({ numberGuess });
+    console.log("Bien le bonjour à toi ! ");
+    console.log(typeof numberGuess);
+    game(numberGuess);
+    score.textContent = `Score = ${userTest}`;
   };
 
   const getRandomArbitrary = (min, max) => {
@@ -91,8 +89,14 @@ document.addEventListener("DOMContentLoaded", () => {
         let essai = userTest === 1 ? "essai" : "essais";
 
         resultMessage = `✅ 🎊 💪🏻 Bien joué ! Le nombre mystère était : ${number}. Tu as réussi en ${userTest} ${essai} !`;
-        reward.textContent =
-          "💶 Tu as gagné 20% à la boutique Séphora de Vincennes ou Cours Saint Emillion";
+        const rewards = [
+          "💶 Tu as gagné -20% à la boutique Séphora de Vincennes ou Cour Saint Emillion",
+          "💶 Pour te récompenser...tu as gagné -50% sur ta prochaine licence de Jujitsu...va vite harceler Alain A. !",
+          "🎄 Pour te récompenser...tu as gagné une bûche glacée offerte par Alain A. !",
+        ];
+        const rewardsIndex = Math.floor(Math.random() * rewards.length);
+
+        reward.textContent = rewards[rewardsIndex];
 
         for (let i = 0; i < 8; i++) {
           confetti();
