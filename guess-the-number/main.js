@@ -101,9 +101,11 @@ document.addEventListener("DOMContentLoaded", () => {
         for (let i = 0; i < 8; i++) {
           confetti();
         }
+
         setTimeout(() => {
           developper.textContent = "Développé par Cédric C.";
         }, 1000);
+
         restartGame();
       }
       resultDiv.classList.add("text-white", "text-2xl");
